@@ -1,0 +1,63 @@
+@component('admin.layouts.content', [ 'title' => 'Comments'])
+
+@slot('breadcrumb')
+<li class="breadcrumb-item active">Comments List</li>
+<li class="breadcrumb-item"><a href="/admin">Admin Dashborad</a></li>
+@endslot
+    <h2>Comments List</h2>
+    <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Comments Table</h3>
+              <div class="card-tools d-flex">
+                <form action="">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="search" class="form-control float-right" placeholder="search" value="{{request('search')}}">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+              <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th>Comment ID</th>
+                        <th>User Name</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                    @foreach ($comments as $comment)
+                    <tr>
+                        <td>{{$comment->id}}</td>
+                        <td>{{$comment->user->name}}</td>
+                        <td>{{$comment->comment}}</td>
+                        <td>
+                            {{-- @can('delete-comment') --}}
+                                <form action="{{route('admin.comments.destroy', [ 'comment' => $comment->id ])}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger mt-2">DELETE</button>
+                                </form>
+                            {{-- @endcan
+                            @can('approved-comment') --}}
+                                
+                            {{-- @endcan --}}
+                        </td>
+                    </tr>
+                @endforeach
+              </tbody></table>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                {{ $comments->appends([ 'search' => request('search')])->render() }}
+            </div>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+@endcomponent
