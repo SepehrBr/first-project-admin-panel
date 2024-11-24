@@ -1,0 +1,16 @@
+{
+    "name": "Cart",
+    "alias": "سبد خرید",
+    "image": "https://www.google.com/imgres?q=cart&imgurl=https%3A%2F%2Fwww.shutterstock.com%2Fimage-vector%2Fshopping-cart-icon-vector-illustration-600nw-1726574749.jpg&imgrefurl=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Fcart-sign&docid=tAiLbA8xjfW8oM&tbnid=j44bIyZx0j5h4M&vet=12ahUKEwi8sfjRrLCHAxXHSaQEHb1hCHUQM3oECEsQAA..i&w=600&h=600&hcb=2&ved=2ahUKEwi8sfjRrLCHAxXHSaQEHb1hCHUQM3oECEsQAA",
+    "description": "سبد خرید برای مدیریت محصولاتی که فصد آنها را دارید",
+    "keywords": [],
+    "canDisable": true,
+    "priority": 0,
+    "providers": [
+        "Modules\\Cart\\Providers\\CartServiceProvider"
+    ],
+    "aliases": {
+        "Cart": "Modules\\Cart\\Helpers\\Cart"
+    },
+    "files": []
+}
